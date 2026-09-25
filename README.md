@@ -23,3 +23,4 @@ All chapters were checked against the OTP 29.1.1 documentation.
 | 7 | Applications and Releases | [pdf](pdf/07-Applications-and-Releases.pdf) | [md](md/07-Applications-and-Releases.md) |
 | 8 | Testing | [pdf](pdf/08-Testing.pdf) | [md](md/08-Testing.md) |
 | 9 | Observability | [pdf](pdf/09-Observability.pdf) | [md](md/09-Observability.md) |
+| 10 | Schedulers and Performance | [pdf](pdf/10-Schedulers-and-Performance.pdf) | [md](md/10-Schedulers-and-Performance.md) |
