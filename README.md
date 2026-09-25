@@ -19,3 +19,4 @@ All chapters were checked against the OTP 29.1.1 documentation.
 | 3 | Binaries and Memory | [pdf](pdf/03-Binaries-and-Memory.pdf) | [md](md/03-Binaries-and-Memory.md) |
 | 4 | ETS | [pdf](pdf/04-ETS.pdf) | [md](md/04-ETS.md) |
 | 5 | gen_server and gen_statem | [pdf](pdf/05-gen_server-and-gen_statem.pdf) | [md](md/05-gen_server-and-gen_statem.md) |
+| 6 | Distribution | [pdf](pdf/06-Distribution.pdf) | [md](md/06-Distribution.md) |
