@@ -24,3 +24,9 @@ All chapters were checked against the OTP 29.1.1 documentation.
 | 8 | Testing | [pdf](pdf/08-Testing.pdf) | [md](md/08-Testing.md) |
 | 9 | Observability | [pdf](pdf/09-Observability.pdf) | [md](md/09-Observability.md) |
 | 10 | Schedulers and Performance | [pdf](pdf/10-Schedulers-and-Performance.pdf) | [md](md/10-Schedulers-and-Performance.md) |
+| 11 | NIFs and Ports | [pdf](pdf/11-NIFs-and-Ports.pdf) | [md](md/11-NIFs-and-Ports.md) |
+| 12 | Elixir Alongside Erlang | [pdf](pdf/12-Elixir-Alongside-Erlang.pdf) | [md](md/12-Elixir-Alongside-Erlang.md) |
+
+## Rebuilding the PDFs
+
+Edit the Markdown in `md/`, then run `tools/build.sh` (all chapters) or `tools/build.sh md/04-ETS.md` (one chapter). It needs `pandoc` and Chromium or Chrome; set `CHROME=/path/to/chrome` if it isn't found automatically.
