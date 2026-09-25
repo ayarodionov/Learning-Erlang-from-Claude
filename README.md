@@ -10,7 +10,7 @@ With AI assistants writing more of the code, the valuable knowledge is less abou
 4. **Plausible but wrong** — code that compiles and passes a happy-path test, and why it fails
 5. **Review checklist and sources**
 
-All chapters were checked against the OTP 29.1.1 documentation. Start with the [Introduction](md/00-Introduction.md); when reviewing code, use the [Review Cheat Sheet](md/13-Review-Cheat-Sheet.md).
+All chapters were checked against the OTP 29.1.1 documentation. Start with the [Introduction](md/00-Introduction.md); when reviewing code, use the [Review Cheat Sheet](md/14-Review-Cheat-Sheet.md).
 
 | # | Chapter | PDF | Markdown |
 | --- | --- | --- | --- |
@@ -27,7 +27,8 @@ All chapters were checked against the OTP 29.1.1 documentation. Start with the [
 | 10 | Schedulers and Performance | [pdf](pdf/10-Schedulers-and-Performance.pdf) | [md](md/10-Schedulers-and-Performance.md) |
 | 11 | NIFs and Ports | [pdf](pdf/11-NIFs-and-Ports.pdf) | [md](md/11-NIFs-and-Ports.md) |
 | 12 | Elixir Alongside Erlang | [pdf](pdf/12-Elixir-Alongside-Erlang.pdf) | [md](md/12-Elixir-Alongside-Erlang.md) |
-| 13 | Review Cheat Sheet | [pdf](pdf/13-Review-Cheat-Sheet.pdf) | [md](md/13-Review-Cheat-Sheet.md) |
+| 13 | gen_statem in Depth | [pdf](pdf/13-gen_statem-in-Depth.pdf) | [md](md/13-gen_statem-in-Depth.md) |
+| 14 | Review Cheat Sheet | [pdf](pdf/14-Review-Cheat-Sheet.pdf) | [md](md/14-Review-Cheat-Sheet.md) |
 
 ## Rebuilding the PDFs
 

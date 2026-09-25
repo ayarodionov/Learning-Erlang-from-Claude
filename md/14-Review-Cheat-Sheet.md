@@ -1,6 +1,6 @@
 ---
 title: "Review Cheat Sheet — A Readable Companion to the OTP Docs"
-subtitle: "Chapter 13 · all checklists in one place · Sep 25, 2026"
+subtitle: "Chapter 14 · all checklists in one place · Sep 25, 2026"
 ---
 
 ## How to use this sheet
@@ -23,6 +23,8 @@ These patterns are not always wrong, but each one deserves a second look.
 | `ets:lookup` followed by `ets:insert` on the same key | Lost updates under concurrency | 4 |
 | `persistent_term:put` outside startup code | Global garbage collection on every update | 4 |
 | `{noreply, State, Timeout}` | Reset by every message | 5 |
+| `receive` inside a `gen_statem` or `gen_server` callback | Blocks the machine; can swallow system messages | 13 |
+| `{{timeout, Name}, ...}` without a matching cancel | Named timers survive state changes | 13 |
 | `gen_server:call` inside `handle_call` | Blocks the server; possible call cycles | 5 |
 | `catch exit:{timeout, _}` followed by a retry | Timeouts are unknown outcomes; duplicates | 2 |
 | `'DOWN'` or `nodedown` handling that takes over leadership | Split brain during partitions | 6 |
@@ -60,6 +62,8 @@ These patterns are not always wrong, but each one deserves a second look.
 - ☐ `init/1` returns fast; slow setup happens in `handle_continue/2` (1)
 - ☐ No callback does slow or blocking work inline; slow work replies later with `gen_server:reply/2` (5)
 - ☐ Every hand-written `receive` has a catch-all, or is replaced by a behaviour (2, 5)
+- ☐ `gen_statem` has a final clause for unexpected `info` events; specific clauses come before generic `postpone` (13)
+- ☐ No `receive` inside behaviour callbacks; waiting is modelled as a state (13)
 - ☐ High-volume producers have backpressure (`call`, batching or shedding) (5)
 - ☐ CPU-heavy work is spread across processes, not funnelled through one server (10)
 - ☐ High-traffic processes have `message_queue_data` considered; heap tuning is measured (2)
@@ -70,7 +74,7 @@ These patterns are not always wrong, but each one deserves a second look.
 - ☐ No code relies on message ordering except between one sender and one receiver (2)
 - ☐ Read-modify-write on ETS uses `update_counter` / `update_element` (4)
 - ☐ Traversals of busy tables use `ordered_set`, one ETS call, or `safe_fixtable` (4)
-- ☐ Anything whose handling depends on a mode is a `gen_statem` (5)
+- ☐ Anything whose handling depends on a mode is a `gen_statem`, built from a written transition table (5, 13)
 - ☐ Values that decide which `gen_statem` events can be handled live in the state, not the data (5)
 - ☐ No two servers `call` each other (5)
 - ☐ Shared native state is locked or atomic; ideally NIFs are pure (11)
@@ -78,8 +82,11 @@ These patterns are not always wrong, but each one deserves a second look.
 ## 6. What happens when something is slow or unreachable?
 
 - ☐ Every request/reply is tagged with a fresh reference or monitor (2)
+- ☐ Asynchronous results carry a reference to the attempt that produced them; stale results are dropped (13)
 - ☐ Timeouts are treated as unknown outcomes; retried operations are idempotent (2, 6)
 - ☐ Real timers use `send_after`/`start_timer` or the right `gen_statem` timeout type (5)
+- ☐ Per-state timers use `state_timeout`; named timeouts are cancelled or handled in every state (13)
+- ☐ Events are postponed only in states the machine will eventually leave (13)
 - ☐ Sends to registered names handle the "not registered right now" case (2)
 - ☐ No process holds a sibling's pid across a possible restart (1)
 - ☐ `noconnection` is handled as "unknown", not "dead" (6)

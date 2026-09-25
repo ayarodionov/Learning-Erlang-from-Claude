@@ -61,7 +61,7 @@ The actions that make `gen_statem` worth using:
 | Every request is handled the same way whatever the state | Some events are only valid in some states |
 | Timeouts are simple or absent | You need per-state timers or events that wait for the right state |
 
-The docs put the overhead of `gen_statem` over `gen_server` as marginal, so choose by shape, not speed.
+The docs put the overhead of `gen_statem` over `gen_server` as marginal, so choose by shape, not speed. Chapter 13 works through a complete `gen_statem` in depth.
 
 ## 3. How the runtime actually does it
 
