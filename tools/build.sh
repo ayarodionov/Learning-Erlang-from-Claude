@@ -3,8 +3,15 @@
 # Usage: tools/build.sh [chapter.md ...]   (default: all chapters)
 set -e
 cd "$(dirname "$0")/.."
-CHROME="${CHROME:-$(command -v chromium || command -v chromium-browser || command -v google-chrome)}"
-[ $# -eq 0 ] && set -- md/*.md
+if [ -z "$CHROME" ]; then
+  for c in chromium chromium-browser google-chrome google-chrome-stable \
+           "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" \
+           "/Applications/Chromium.app/Contents/MacOS/Chromium"; do
+    if command -v "$c" >/dev/null 2>&1 || [ -x "$c" ]; then CHROME="$c"; break; fi
+  done
+fi
+if [ -z "$CHROME" ]; then echo "Chromium/Chrome not found; set CHROME=/path/to/chrome" >&2; exit 1; fi
+if [ $# -eq 0 ]; then set -- md/*.md; fi
 for f in "$@"; do
   c=$(basename "$f" .md)
   tmp=$(mktemp --suffix=.html)

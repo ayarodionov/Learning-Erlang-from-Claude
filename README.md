@@ -10,10 +10,11 @@ With AI assistants writing more of the code, the valuable knowledge is less abou
 4. **Plausible but wrong** — code that compiles and passes a happy-path test, and why it fails
 5. **Review checklist and sources**
 
-All chapters were checked against the OTP 29.1.1 documentation.
+All chapters were checked against the OTP 29.1.1 documentation. Start with the [Introduction](md/00-Introduction.md); when reviewing code, use the [Review Cheat Sheet](md/13-Review-Cheat-Sheet.md).
 
 | # | Chapter | PDF | Markdown |
 | --- | --- | --- | --- |
+| 0 | Introduction | [pdf](pdf/00-Introduction.pdf) | [md](md/00-Introduction.md) |
 | 1 | Supervision Trees | [pdf](pdf/01-Supervision-Trees.pdf) | [md](md/01-Supervision-Trees.md) |
 | 2 | Processes and Mailboxes | [pdf](pdf/02-Processes-and-Mailboxes.pdf) | [md](md/02-Processes-and-Mailboxes.md) |
 | 3 | Binaries and Memory | [pdf](pdf/03-Binaries-and-Memory.pdf) | [md](md/03-Binaries-and-Memory.md) |
@@ -26,6 +27,7 @@ All chapters were checked against the OTP 29.1.1 documentation.
 | 10 | Schedulers and Performance | [pdf](pdf/10-Schedulers-and-Performance.pdf) | [md](md/10-Schedulers-and-Performance.md) |
 | 11 | NIFs and Ports | [pdf](pdf/11-NIFs-and-Ports.pdf) | [md](md/11-NIFs-and-Ports.md) |
 | 12 | Elixir Alongside Erlang | [pdf](pdf/12-Elixir-Alongside-Erlang.pdf) | [md](md/12-Elixir-Alongside-Erlang.md) |
+| 13 | Review Cheat Sheet | [pdf](pdf/13-Review-Cheat-Sheet.pdf) | [md](md/13-Review-Cheat-Sheet.md) |
 
 ## Rebuilding the PDFs
 
