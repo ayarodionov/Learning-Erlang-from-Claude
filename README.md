@@ -20,3 +20,5 @@ All chapters were checked against the OTP 29.1.1 documentation.
 | 4 | ETS | [pdf](pdf/04-ETS.pdf) | [md](md/04-ETS.md) |
 | 5 | gen_server and gen_statem | [pdf](pdf/05-gen_server-and-gen_statem.pdf) | [md](md/05-gen_server-and-gen_statem.md) |
 | 6 | Distribution | [pdf](pdf/06-Distribution.pdf) | [md](md/06-Distribution.md) |
+| 7 | Applications and Releases | [pdf](pdf/07-Applications-and-Releases.pdf) | [md](md/07-Applications-and-Releases.md) |
+| 8 | Testing | [pdf](pdf/08-Testing.pdf) | [md](md/08-Testing.md) |
