@@ -18,3 +18,4 @@ All chapters were checked against the OTP 29.1.1 documentation.
 | 2 | Processes and Mailboxes | [pdf](pdf/02-Processes-and-Mailboxes.pdf) | [md](md/02-Processes-and-Mailboxes.md) |
 | 3 | Binaries and Memory | [pdf](pdf/03-Binaries-and-Memory.pdf) | [md](md/03-Binaries-and-Memory.md) |
 | 4 | ETS | [pdf](pdf/04-ETS.pdf) | [md](md/04-ETS.md) |
+| 5 | gen_server and gen_statem | [pdf](pdf/05-gen_server-and-gen_statem.pdf) | [md](md/05-gen_server-and-gen_statem.md) |
