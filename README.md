@@ -12,6 +12,8 @@ With AI assistants writing more of the code, the valuable knowledge is less abou
 
 All chapters were checked against the OTP 29.1.1 documentation. Start with the [Introduction](md/00-Introduction.md); when reviewing code, use the [Review Cheat Sheet](md/14-Review-Cheat-Sheet.md).
 
+**Companion book:** [Learning Elixir from Claude](https://github.com/ayarodionov/Learning-Elixir-From-Claude) covers what Elixir adds on top of the runtime: pattern matching, GenServer and Task, supervision with Registry, macros, Mix and releases, ExUnit, types and telemetry.
+
 | # | Chapter | PDF | Markdown |
 | --- | --- | --- | --- |
 | 0 | Introduction | [pdf](pdf/00-Introduction.pdf) | [md](md/00-Introduction.md) |

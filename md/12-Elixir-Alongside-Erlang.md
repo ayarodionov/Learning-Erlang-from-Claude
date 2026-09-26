@@ -151,6 +151,8 @@ This is evaluated when the release is built, on the build machine. The key there
 
 ### Sources
 
+- Companion book, *Learning Elixir from Claude*: <https://github.com/ayarodionov/Learning-Elixir-From-Claude>
+
 - GenServer: <https://hexdocs.pm/elixir/GenServer.html>
 - Task: <https://hexdocs.pm/elixir/Task.html>
 - Agent: <https://hexdocs.pm/elixir/Agent.html>
