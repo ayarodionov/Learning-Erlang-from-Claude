@@ -59,7 +59,7 @@ A large binary is two pieces: the bytes, stored off-heap with a reference count,
 
 ### Sub-binaries keep the whole parent alive
 
-Slicing a large binary does not copy. The slice points into the original, so a 16-byte slice of a 10 MB binary keeps all 10 MB alive for as long as the slice exists. `binary:referenced_byte_size/1` shows how much a binary is really holding onto.
+Slicing a large binary usually does not copy. A slice larger than 64 bytes points into the original, so a 1 KB slice of a 10 MB binary keeps all 10 MB alive for as long as the slice exists. Slices of 64 bytes or less are copied into small heap binaries instead; tested on OTP 25, a 64-byte slice referenced 64 bytes while a 65-byte slice referenced all 10 MB. `binary:referenced_byte_size/1` shows how much a binary is really holding onto.
 
 ### The append optimization
 
@@ -95,15 +95,15 @@ render(Rows) ->
 
 `++` copies its whole left operand, so this is O(n²), and the result is a character list at 16 bytes per character. Fix: `[format_row(R) || R <- Rows]` is already valid iodata; hand it straight to the socket or file.
 
-### 4.3 Keeping a tiny slice of a huge binary
+### 4.3 Keeping a small slice of a huge binary
 
 ```erlang
 handle_info({http_body, Body}, State) ->   %% Body is 10 MB
-    <<_:32/binary, SessionId:16/binary, _/binary>> = Body,
-    {noreply, State#{last_session => SessionId}}.
+    <<_:32/binary, Header:512/binary, _/binary>> = Body,
+    {noreply, State#{last_header => Header}}.
 ```
 
-`SessionId` is a sub-binary, so the process state now pins the full 10 MB for as long as it keeps it. Repeat this per request and memory climbs with no obvious cause. Fix: `binary:copy(SessionId)` before storing it. The docs caution that copying only helps when nothing else still references the large binary, so confirm with `binary:referenced_byte_size/1` first.
+`Header` is a 512-byte sub-binary, so the process state now pins the full 10 MB for as long as it keeps it. Repeat this per request and memory climbs with no obvious cause. (A slice of 64 bytes or less would have been copied automatically, which is why a short ID doesn't show the problem.) Fix: `binary:copy(Header)` before storing it. The docs caution that copying only helps when nothing else still references the large binary, so confirm with `binary:referenced_byte_size/1` first.
 
 ### 4.4 The router that never collects
 
@@ -145,7 +145,7 @@ Using `Acc` after creating `Acc1` means two live versions of the accumulator, so
 - ☐ Text in hot paths is binaries or iodata, not character lists
 - ☐ Output is built as iodata and written once; no `++` or binary concatenation in loops
 - ☐ Binary accumulators only ever append, and only the newest version is used
-- ☐ Small slices of large binaries that are stored long-term are copied (after checking `referenced_byte_size`)
+- ☐ Slices over 64 bytes of large binaries that are stored long-term are copied (after checking `referenced_byte_size`)
 - ☐ Long-lived processes that touch large binaries hibernate or garbage-collect regularly
 - ☐ No atoms are created from external input
 - ☐ `+bin_opt_info` has been checked on binary-heavy modules

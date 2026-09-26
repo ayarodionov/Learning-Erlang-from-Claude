@@ -29,7 +29,7 @@ The docs are direct: "Even experienced software developers often guess wrong abo
 
 | Tool | Measures | Overhead |
 | --- | --- | --- |
-| `tprof` | Call counts, time, or heap allocation per function | Moderate |
+| `tprof` | Call counts, time, or heap allocation per function | Tracing-based; depends on what you measure |
 | `eprof` | Time per function, per process | Small |
 | `cprof` | Call counts only | Low |
 | `fprof` | Full call-graph timing | Large |

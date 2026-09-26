@@ -14,6 +14,8 @@ All chapters were checked against the OTP 29.1.1 documentation. Start with the [
 
 **Companion book:** [Learning Elixir from Claude](https://github.com/ayarodionov/Learning-Elixir-From-Claude) covers what Elixir adds on top of the runtime: pattern matching, GenServer and Task, supervision with Registry, macros, Mix and releases, ExUnit, types and telemetry.
 
+**Whole book in one PDF:** [Erlang book, all chapters](pdf/Learning-Erlang-from-Claude.pdf), with a table of contents.
+
 | # | Chapter | PDF | Markdown |
 | --- | --- | --- | --- |
 | 0 | Introduction | [pdf](pdf/00-Introduction.pdf) | [md](md/00-Introduction.md) |
@@ -35,3 +37,5 @@ All chapters were checked against the OTP 29.1.1 documentation. Start with the [
 ## Rebuilding the PDFs
 
 Edit the Markdown in `md/`, then run `tools/build.sh` (all chapters) or `tools/build.sh md/04-ETS.md` (one chapter). It needs `pandoc` and Chromium or Chrome; set `CHROME=/path/to/chrome` if it isn't found automatically.
+
+To rebuild the combined book, run `tools/build_book.py` (same requirements).

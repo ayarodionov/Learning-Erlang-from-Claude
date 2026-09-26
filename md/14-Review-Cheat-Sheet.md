@@ -100,7 +100,7 @@ These patterns are not always wrong, but each one deserves a second look.
 - ☐ Text in hot paths is binaries or iodata, not character lists (3)
 - ☐ Output is built as iodata and written once (3)
 - ☐ Binary accumulators only append, and only the newest version is used (3)
-- ☐ Small slices of large binaries stored long-term are copied, after checking `referenced_byte_size` (3)
+- ☐ Slices over 64 bytes of large binaries stored long-term are copied, after checking `referenced_byte_size` (3)
 - ☐ Long-lived processes that touch large binaries hibernate or garbage-collect regularly (3)
 - ☐ Large shared data is in ETS or passed as binaries, not copied per send (2)
 - ☐ ETS objects are small enough to copy on every lookup (4)
